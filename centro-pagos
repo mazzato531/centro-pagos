@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="description" content="Pagos - acceso unificado a Pago Destajistas y Gerencia de Pagos">
+  <title>Pagos</title>
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --card:#ffffff;
+      --text:#1d1d1f;
+      --muted:#6e6e73;
+      --line:#e5e5e7;
+      --accent:#0071e3;
+      --shadow:0 12px 35px rgba(0,0,0,.07);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif;color:var(--text);background:var(--bg)}
+    body{overflow-x:hidden}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(245,245,247,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(0,0,0,.07);
+    }
+    .nav{
+      max-width:1500px;margin:auto;padding:15px 22px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{font-size:21px;font-weight:700;letter-spacing:-.5px}
+    .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+    button,.open{
+      border:0;border-radius:999px;padding:9px 15px;
+      font:inherit;font-size:14px;cursor:pointer;text-decoration:none;
+      background:#fff;color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.08);
+    }
+    button:hover,.open:hover{background:#f0f0f2}
+    .hero{
+      max-width:1500px;margin:0 auto;padding:48px 22px 26px;
+      text-align:center;
+    }
+    .hero h1{font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 12px;letter-spacing:-2.5px}
+    .hero p{margin:0;color:var(--muted);font-size:18px}
+    .workspace{
+      max-width:1500px;margin:0 auto;padding:18px 22px 40px;
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    }
+    .panel{
+      background:var(--card);border:1px solid var(--line);border-radius:24px;
+      overflow:hidden;box-shadow:var(--shadow);min-width:0;
+    }
+    .panel-head{
+      padding:18px 20px;display:flex;align-items:center;justify-content:space-between;
+      gap:12px;border-bottom:1px solid var(--line);background:#fff;
+    }
+    .panel-title{font-size:19px;font-weight:700;letter-spacing:-.3px}
+    .panel-subtitle{font-size:13px;color:var(--muted);margin-top:3px}
+    .actions{display:flex;gap:7px;align-items:center}
+    .primary{background:var(--accent);color:#fff}
+    .primary:hover{background:#0077ed}
+    .frame-wrap{height:calc(100vh - 245px);min-height:650px;background:#fff}
+    iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+    .fallback{
+      display:none;padding:80px 25px;text-align:center;color:var(--muted);
+    }
+    .fallback strong{display:block;color:var(--text);font-size:20px;margin-bottom:8px}
+    footer{padding:5px 22px 30px;text-align:center;color:#8a8a8f;font-size:12px}
+    @media(max-width:950px){
+      .workspace{grid-template-columns:1fr}
+      .frame-wrap{height:70vh;min-height:600px}
+      .hero{padding-top:35px}
+    }
+    @media(max-width:600px){
+      .nav{padding:12px 15px}
+      .nav-links{display:none}
+      .workspace{padding:10px 12px 28px}
+      .panel{border-radius:18px}
+      .panel-head{padding:14px}
+      .frame-wrap{height:72vh;min-height:550px}
+      .hero{padding:32px 15px 20px}
+      .hero h1{letter-spacing:-1.8px}
+      .hero p{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">Pagos</div>
+    <div class="nav-links">
+      <button onclick="scrollToPanel('destajistas')">Destajistas</button>
+      <button onclick="scrollToPanel('gerencia')">Gerencia</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Pagos</h1>
+    <p>Pago de destajistas y gerencia, en un solo lugar.</p>
+  </section>
+
+  <section class="workspace">
+
+    <article class="panel" id="destajistas">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Pago Destajistas</div>
+          <div class="panel-subtitle">Aplicación de pagos a destajistas</div>
+        </div>
+        <div class="actions">
+          <a class="open primary"
+             href="https://pago-destajistas.netlify.app"
+             target="_blank" rel="noopener noreferrer">Abrir</a>
+        </div>
+      </div>
+      <div class="frame-wrap">
+        <iframe
+          src="https://pago-destajistas.netlify.app"
+          title="Pago Destajistas"
+          loading="eager"
+          allow="clipboard-read; clipboard-write">
+        </iframe>
+        <div class="fallback">
+          <strong>Pago Destajistas</strong>
+          <span>Si esta aplicación no puede mostrarse dentro de Pagos, utiliza el botón “Abrir”.</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel" id="gerencia">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Gerencia de Pagos</div>
+          <div class="panel-subtitle">Control y gestión de pagos</div>
+        </div>
+        <div class="actions">
+          <a class="open primary"
+             href="https://gerencia-pagos.netlify.app"
+             target="_blank" rel="noopener noreferrer">Abrir</a>
+        </div>
+      </div>
+      <div class="frame-wrap">
+        <iframe
+          src="https://gerencia-pagos.netlify.app"
+          title="Gerencia de Pagos"
+          loading="eager"
+          allow="clipboard-read; clipboard-write">
+        </iframe>
+        <div class="fallback">
+          <strong>Gerencia de Pagos</strong>
+          <span>Si esta aplicación no puede mostrarse dentro de Pagos, utiliza el botón “Abrir”.</span>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  Pagos · Acceso unificado
+</footer>
+
+<script>
+  function scrollToPanel(id){
+    document.getElementById(id)?.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+</script>
+
+</body>
+</html>
